@@ -1,0 +1,13 @@
+#!/bin/sh
+
+mkdir -p helloworld/DEBIAN
+mkdir -p helloworld/usr/local/bin
+cp hello.sh helloworld/usr/local/bin/
+
+cat<<EOF>helloworld/DEBIAN/control
+Package: helloworld
+Version: 0.1
+Maintainer: Wojciech Adam Koszek <wojciech@koszek.com>
+Architecture: all
+Description: nothing special. just a hello world program
+EOF
