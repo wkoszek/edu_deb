@@ -11,3 +11,6 @@ Maintainer: Wojciech Adam Koszek <wojciech@koszek.com>
 Architecture: all
 Description: nothing special. just a hello world program
 EOF
+
+dpkg-deb --build helloworld
+echo "built!"
