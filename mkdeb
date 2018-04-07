@@ -1,10 +1,12 @@
 #!/bin/sh
 
-mkdir -p helloworld/DEBIAN
-mkdir -p helloworld/usr/local/bin
-cp hello.sh helloworld/usr/local/bin/
+H=helloworld
 
-cat<<EOF>helloworld/DEBIAN/control
+mkdir -p ${H}/DEBIAN
+mkdir -p ${H}/usr/local/bin
+cp hello.sh ${H}/usr/local/bin/
+
+cat<<EOF>${H}/DEBIAN/control
 Package: helloworld
 Version: 0.1
 Maintainer: Wojciech Adam Koszek <wojciech@koszek.com>
@@ -12,5 +14,10 @@ Architecture: all
 Description: nothing special. just a hello world program
 EOF
 
-dpkg-deb --build helloworld
+cat<<EOF>${H}/DEBIAN/postinst
+echo "post install script!"
+EOF
+mkdir ${H}/DEBIAN/postinst
+
+dpkg-deb --build ${H}
 echo "built!"
